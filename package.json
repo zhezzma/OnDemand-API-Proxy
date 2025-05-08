@@ -1,33 +1,12 @@
 {
-    "name": "ondemand-api-proxy",
+    "name": "api-hub",
     "version": "1.0.0",
-    "description": "在边缘网络中构建OpenAI与OnDemand.io之间的语义翻译层",
-    "main": "src/index.js",
+    "private": true,
     "scripts": {
-      "dev": "wrangler dev",
-      "deploy": "wrangler publish",
-      "format": "prettier --write 'src/**/*.{js,css,json,md}'"
+      "deploy": "wrangler deploy",
+      "dev": "wrangler dev"
     },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/ImKK666/OnDemand-API-Proxy.git"
-    },
-    "keywords": [
-      "cloudflare-workers",
-      "openai",
-      "api-proxy",
-      "ondemand",
-      "edge-computing",
-      "ai-bridge"
-    ],
-    "author": "ImKK666",
-    "license": "MIT",
-    "bugs": {
-      "url": "https://github.com/ImKK666/OnDemand-API-Proxy/issues"
-    },
-    "homepage": "https://github.com/ImKK666/OnDemand-API-Proxy#readme",
     "devDependencies": {
-      "prettier": "^2.8.8",
       "wrangler": "^3.0.0"
     }
   }

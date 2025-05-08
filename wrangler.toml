@@ -2,20 +2,16 @@ name = "ondemand-api-proxy"
 main = "src/index.js"
 compatibility_date = "2025-05-09"
 
-# 这是一个变量绑定示例，定义了默认的环境变量值
+# 核心配置变量
 [vars]
-# 这些是默认值，可以在Cloudflare Dashboard中覆盖
 DEBUG_MODE = "false"
 BAD_KEY_RETRY_INTERVAL = "600"
 ONDEMAND_API_BASE = "https://api.on-demand.io/chat/v1"
 DEFAULT_ONDEMAND_MODEL = "predefined-openai-gpt4o"
 ONDEMAND_APIKEYS = "[\"\"]"
-# OPENAI_API_KEY需要在Cloudflare Dashboard中单独设置
 
-# 定义发布和开发环境的变量，允许在不同环境中使用不同配置
-[env.production]
-# 生产环境特定配置
-
-[env.development]
-# 开发环境特定配置
-# 可以添加更多的环境变量用于开发测试
+# 部署区域配置 - 思考计算的地理政治学
+[placement]
+mode = "smart"
+# 如果有地理限制考量，可以取消下行注释并定制
+# regions = ["wnam", "enam", "weur", "eeur"]
