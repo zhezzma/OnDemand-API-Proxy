@@ -262,13 +262,33 @@ const ONDEMAND_APIKEYS = [
       
       // 查找用户消息 - 提取交互的本质
       let userMsg = null;
-      for (let i = messages.length - 1; i >= 0; i--) {
-        if (messages[i].role === "user") {
-          userMsg = messages[i].content;
-          break;
+      // for (let i = messages.length - 1; i >= 0; i--) {
+      //   if (messages[i].role === "user") {
+      //     userMsg = messages[i].content;
+      //     break;
+      //   }
+      // }
+    if (Array.isArray(messages) && messages.length > 0) {
+      userMsg = "以下是完整的对话记录：\n\n"; // 添加一个引言
+    
+      userMsg += messages.map(message => {
+        let roleDisplay = "未知参与者"; // 默认角色显示名称
+        if (message.role === "user") {
+          roleDisplay = "用户";
+        } else if (message.role === "assistant") {
+          roleDisplay = "AI助手";
+        } else if (message.role) {
+          // 对于其他角色，首字母大写
+          roleDisplay = message.role.charAt(0).toUpperCase() + message.role.slice(1);
         }
-      }
-      
+    
+        const content = message.content || ""; // 确保内容是字符串，即使是空
+    
+        // 格式化为： "角色：\n内容"
+        return `${roleDisplay}：\n${content}`;
+      }).join('\n\n'); // 使用两个换行符来分隔不同的消息条目，使其更清晰
+    }
+        
       if (userMsg === null) {
         debug("未找到用户消息");
         return new Response(
