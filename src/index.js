@@ -269,7 +269,7 @@ const ONDEMAND_APIKEYS = [
       //   }
       // }
     if (Array.isArray(messages) && messages.length > 0) {
-      userMsg = "以下是完整的对话记录：\n\n"; // 添加一个引言
+      userMsg = "根据对话记录回答问题,最后一条是用户的问题：\n\n"; // 添加一个引言
     
       userMsg += messages.map(message => {
         let roleDisplay = "未知参与者"; // 默认角色显示名称
